@@ -188,7 +188,7 @@ jobs:
         run: |
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
-          
+          ls
           echo "Building the kernel..."
           rm ./common/android/abi_gki_protected_exports_* || echo "No protected exports!"
           rm ./msm-kernel/android/abi_gki_protected_exports_* || echo "No protected exports!"
@@ -196,7 +196,7 @@ jobs:
           #git config --global user.name "TheWildJames"
           #git add *
           #git commit -s -a -m "getting rid of -dirty"
-          ./kernel_platform/oplus/build/oplus_build_kernel.sh pineapple gki
+          ./oplus/build/oplus_build_kernel.sh pineapple gki
    
       - name: Create Bootimgs Folder and Copy Images
         run: |
