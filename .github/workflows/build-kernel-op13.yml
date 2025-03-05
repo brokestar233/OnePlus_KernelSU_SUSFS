@@ -28,26 +28,6 @@ jobs:
           
           echo "CONFIG set to: $CONFIG"
 
-      # Install ccache
-      - name: Install ccache
-        run: sudo apt update && sudo apt install -y ccache
-
-      - name: Set up ccache
-        run: |
-          mkdir -p ~/.cache/bazel # Ensure the directory exists
-          ccache --version
-          ccache --max-size=2G
-          ccache --set-config=compression=true
-          echo "CCACHE_DIR=$HOME/.ccache" >> $GITHUB_ENV
-      
-      - name: Restore ccache from cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.ccache
-          key: a15-6.6-30-ccache-${{ github.sha }}
-          restore-keys: |
-            a15-6.6-30-ccache-
-
       - name: Install Repo
         run: |
           # Install dependencies
